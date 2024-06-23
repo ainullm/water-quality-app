@@ -11,13 +11,13 @@ import '../shared/utils/app_snackbar.dart';
 class WaterQualityRepositories {
   DioClient dioClient = DioClient(API_BASE_URL);
 
-  Future<Response?> waterQualityCheck() async {
+  Future<Response?> waterQualityCheck(Map<String, dynamic> data) async {
     try {
       var dataWater = <String, dynamic>{
-        'do': 8.0,
-        'ph': 7.0,
-        'salinitas': 22.0,
-        'suhu': 30.0,
+        'do': data['do'],
+        'ph': data['ph'],
+        'suhu': data['suhu'],
+        'salinitas': data['salinitas'],
       };
       final res = await dioClient
           .create()

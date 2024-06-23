@@ -1,8 +1,9 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Response;
 
 import '../../../repositories/water_quality_repositories.dart';
 import '../../../shared/styles/app_colors.dart';
@@ -35,16 +36,16 @@ class CheckWaterQualityController extends GetxController {
     }
   }
 
-  Future<void> checkWater() async {
+  Future<Response?> checkWater(input) async {
     try {
-      final resp = await WaterQualityRepositories().waterQualityCheck();
+      final resp = await WaterQualityRepositories().waterQualityCheck(input);
       if (resp != null && resp.statusCode == 200) {
         quality.value = resp.data['quality'];
-        // weights = resp.data['bobot_normal'];
         wsmValue.value = resp.data['wsm'];
       } else {
         resetParameters();
       }
+      return resp;
     } catch (e) {
       log('Error: $e');
       // Reset all parameters in case of error
@@ -53,6 +54,7 @@ class CheckWaterQualityController extends GetxController {
     log('Quality: ${quality.value}');
     // log('Weights: $weights');
     log('WSM Value: ${wsmValue.value}');
+    return null;
     // log('pH: ${ph.value}');
     // log('Salinity: ${salinity.value}');
     // log('Temperature: ${temperature.value}');

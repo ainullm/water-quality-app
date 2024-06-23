@@ -146,7 +146,16 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
                         onFieldSubmitted: (value) {
-                          controller.checkWater().then((value) {
+                          controller.checkWater(
+                            {
+                              'do': double.parse(controller.doController.text),
+                              'ph': double.parse(controller.phController.text),
+                              'suhu': double.parse(
+                                  controller.temperatureController.text),
+                              'salinitas': double.parse(
+                                  controller.salinityController.text),
+                            },
+                          ).then((value) {
                             Future.delayed(const Duration(milliseconds: 100),
                                 () {
                               if (controller.quality.value.isNotEmpty) {
@@ -194,7 +203,14 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                 title: 'Failed!',
                                 subtitle: 'Please fill all the fields');
                           } else {
-                            controller.checkWater().then((value) {
+                            controller.checkWater({
+                              'do': double.parse(controller.doController.text),
+                              'ph': double.parse(controller.phController.text),
+                              'suhu': double.parse(
+                                  controller.temperatureController.text),
+                              'salinitas': double.parse(
+                                  controller.salinityController.text),
+                            }).then((value) {
                               Future.delayed(const Duration(milliseconds: 100),
                                   () {
                                 if (controller.quality.value.isNotEmpty) {
