@@ -9,6 +9,7 @@ import 'package:spk_water_quality_fuzzyahp_ta/app/shared/utils/images_utils.dart
 import 'package:spk_water_quality_fuzzyahp_ta/app/shared/widgets/text_field_widget.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+import '../../../shared/utils/app_snackbar.dart';
 import '../../../shared/utils/button_utils.dart';
 import '../controllers/check_water_quality_controller.dart';
 
@@ -84,44 +85,91 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         height: 20,
                       ),
                       MyTextFieldWidget(
+                        controller: controller.doController,
                         keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
                         // colorBackground: blueShade,
                         colorOnFocus: blue,
                         colorOffFocus: blueShade,
                         hintText: 'Disolved Oxygen (DO)',
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter a DO value';
+                          }
+                          return null;
+                        },
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
                             ?.copyWith(color: blue.withOpacity(0.9)),
                       ),
                       MyTextFieldWidget(
+                        controller: controller.phController,
                         keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
                         // colorBackground: redShade,
                         colorOnFocus: red,
                         colorOffFocus: redShade,
                         hintText: 'pH',
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter a pH value';
+                          }
+                          return null;
+                        },
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
                             ?.copyWith(color: red.withOpacity(0.9)),
                       ),
                       MyTextFieldWidget(
+                        controller: controller.salinityController,
                         keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
                         // colorBackground: purpleShade,
                         colorOnFocus: purple,
                         colorOffFocus: purpleShade,
                         hintText: 'Salinity',
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter a salinity value';
+                          }
+                          return null;
+                        },
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
                             ?.copyWith(color: purple.withOpacity(0.9)),
                       ),
                       MyTextFieldWidget(
+                        controller: controller.temperatureController,
                         keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (value) {
+                          controller.checkWater().then((value) {
+                            Future.delayed(const Duration(milliseconds: 100),
+                                () {
+                              if (controller.quality.value.isNotEmpty) {
+                                controller.scrollController.animateTo(
+                                  controller.scrollController.position
+                                      .maxScrollExtent,
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
+                              }
+                            });
+                          });
+                        },
                         // colorBackground: orangeShade,
                         colorOnFocus: orange,
                         colorOffFocus: orangeShade,
                         hintText: 'Temperature',
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter a temperature value';
+                          }
+                          return null;
+                        },
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
@@ -138,19 +186,29 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                             .titleSmall
                             ?.copyWith(color: white),
                         onTap: () {
-                          controller.checkWater().then((value) {
-                            Future.delayed(const Duration(milliseconds: 100),
-                                () {
-                              if (controller.quality.value.isNotEmpty) {
-                                controller.scrollController.animateTo(
-                                  controller.scrollController.position
-                                      .maxScrollExtent,
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.ease,
-                                );
-                              }
+                          if (controller.doController.text.isEmpty ||
+                              controller.phController.text.isEmpty ||
+                              controller.salinityController.text.isEmpty ||
+                              controller.temperatureController.text.isEmpty) {
+                            AppSnackbar.failure(
+                                title: 'Failed!',
+                                subtitle: 'Please fill all the fields');
+                          } else {
+                            controller.checkWater().then((value) {
+                              Future.delayed(const Duration(milliseconds: 100),
+                                  () {
+                                if (controller.quality.value.isNotEmpty) {
+                                  controller.scrollController.animateTo(
+                                    controller.scrollController.position
+                                        .maxScrollExtent,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                }
+                              });
                             });
-                          });
+                          }
+
                           // controller.scrollController.animateTo(
                           //   controller
                           //       .scrollController.position.maxScrollExtent,
@@ -215,7 +273,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                           .bodyMedium,
                                     ),
                                     Text(
-                                      '${controller.dissolvedOxygen.value} mg/L',
+                                      '${controller.doController.text} mg/L',
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall
@@ -255,7 +313,8 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   ],
                                   markerPointers: [
                                     LinearShapePointer(
-                                      value: controller.dissolvedOxygen.value,
+                                      value: double.parse(
+                                          controller.doController.text),
                                       shapeType: LinearShapePointerType.circle,
                                       elevation: 1,
                                       elevationColor: Colors.blueGrey,
@@ -277,7 +336,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                           .bodyMedium,
                                     ),
                                     Text(
-                                      '${controller.ph.value}',
+                                      controller.phController.text,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall
@@ -332,7 +391,8 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   ],
                                   markerPointers: [
                                     LinearShapePointer(
-                                      value: controller.ph.value,
+                                      value: double.parse(
+                                          controller.phController.text),
                                       shapeType: LinearShapePointerType.circle,
                                       elevation: 1,
                                       elevationColor: Colors.blueGrey,
@@ -354,7 +414,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                           .bodyMedium,
                                     ),
                                     Text(
-                                      '${controller.salinity.value} ppt',
+                                      '${controller.salinityController.text} ppt',
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall
@@ -411,7 +471,9 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   ],
                                   markerPointers: [
                                     LinearShapePointer(
-                                      value: controller.salinity.value,
+                                      value: double.parse(
+                                        controller.salinityController.text,
+                                      ),
                                       shapeType: LinearShapePointerType.circle,
                                       elevation: 1,
                                       elevationColor: Colors.blueGrey,
@@ -433,7 +495,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                           .bodyMedium,
                                     ),
                                     Text(
-                                      '${controller.temperature.value} °C',
+                                      '${controller.temperatureController.text} °C',
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall
@@ -490,7 +552,9 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   ],
                                   markerPointers: [
                                     LinearShapePointer(
-                                      value: controller.temperature.value,
+                                      value: double.parse(
+                                        controller.temperatureController.text,
+                                      ),
                                       shapeType: LinearShapePointerType.circle,
                                       elevation: 1,
                                       elevationColor: Colors.blueGrey,

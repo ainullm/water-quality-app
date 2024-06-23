@@ -26,6 +26,8 @@ class MyTextFieldWidget extends StatelessWidget {
     this.colorBackground,
     this.hintStyle,
     this.colorOffFocus,
+    this.textInputAction,
+    this.onFieldSubmitted,
   });
 
   final String? labelText;
@@ -49,6 +51,8 @@ class MyTextFieldWidget extends StatelessWidget {
   final Color? colorOffFocus;
   final Color? colorBackground;
   final TextStyle? hintStyle;
+  final TextInputAction? textInputAction;
+  final Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +71,24 @@ class MyTextFieldWidget extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         obscureText: obscureText ?? false,
+        textInputAction: textInputAction,
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
+            // errorText: validator != null ? validator!(controller?.text) : null,
+            // errorBorder: OutlineInputBorder(
+            //   borderRadius: BorderRadius.circular(10),
+            //   borderSide: BorderSide(
+            //     color: colorOnFocus ?? black2,
+            //     width: 1,
+            //   ),
+            // ),
+            // focusedErrorBorder: OutlineInputBorder(
+            //   borderRadius: BorderRadius.circular(10),
+            //   borderSide: BorderSide(
+            //     color: colorOnFocus ?? black2,
+            //     width: 1,
+            //   ),
+            // ),
             filled: true,
             fillColor: colorBackground ?? white,
             // border: OutlineInputBorder(

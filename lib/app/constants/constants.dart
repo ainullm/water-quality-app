@@ -1,5 +1,5 @@
 //API
-const String API_BASE_URL = "http://127.0.0.1:5000";
+const String API_BASE_URL = "http://8.215.61.58:6060";
 // const String BASE_URL = "https://sakinah-api.superrexy-dev.my.id";
 
 //SharedPreferences

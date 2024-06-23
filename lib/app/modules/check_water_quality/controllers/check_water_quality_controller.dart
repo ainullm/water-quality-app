@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -8,12 +9,16 @@ import '../../../shared/styles/app_colors.dart';
 
 class CheckWaterQualityController extends GetxController {
   var quality = ''.obs;
-  var weights = [].obs;
+  // var weights = [].obs;
   var wsmValue = 0.0.obs;
-  var ph = 0.0.obs;
-  var salinity = 0.0.obs;
-  var temperature = 0.0.obs;
-  var dissolvedOxygen = 0.0.obs;
+  // var ph = 0.0.obs;
+  // var salinity = 0.0.obs;
+  // var temperature = 0.0.obs;
+  // var dissolvedOxygen = 0.0.obs;
+  TextEditingController doController = TextEditingController();
+  TextEditingController phController = TextEditingController();
+  TextEditingController salinityController = TextEditingController();
+  TextEditingController temperatureController = TextEditingController();
   ScrollController scrollController = ScrollController();
 
   // @override
@@ -22,17 +27,21 @@ class CheckWaterQualityController extends GetxController {
   //   super.dispose();
   // }
 
+  Future<void> getThreshold() async {
+    try {
+      final resp = await WaterQualityRepositories().getThresholds();
+    } catch (e) {
+      e.toString();
+    }
+  }
+
   Future<void> checkWater() async {
     try {
       final resp = await WaterQualityRepositories().waterQualityCheck();
       if (resp != null && resp.statusCode == 200) {
         quality.value = resp.data['quality'];
-        weights.value = List<double>.from(resp.data['weights']);
+        // weights = resp.data['bobot_normal'];
         wsmValue.value = resp.data['wsm'];
-        ph.value = resp.data['ph'];
-        salinity.value = resp.data['salinitas'];
-        temperature.value = resp.data['suhu'];
-        dissolvedOxygen.value = resp.data['do'];
       } else {
         resetParameters();
       }
@@ -42,28 +51,30 @@ class CheckWaterQualityController extends GetxController {
       resetParameters();
     }
     log('Quality: ${quality.value}');
-    log('Weights: $weights');
+    // log('Weights: $weights');
     log('WSM Value: ${wsmValue.value}');
-    log('pH: ${ph.value}');
-    log('Salinity: ${salinity.value}');
-    log('Temperature: ${temperature.value}');
-    log('Dissolved Oxygen: ${dissolvedOxygen.value}');
+    // log('pH: ${ph.value}');
+    // log('Salinity: ${salinity.value}');
+    // log('Temperature: ${temperature.value}');
+    // log('Dissolved Oxygen: ${dissolvedOxygen.value}');
   }
 
   void resetParameters() {
     quality.value = '';
-    weights.clear();
+    // weights.clear();
     wsmValue.value = 0.0;
-    ph.value = 0.0;
-    salinity.value = 0.0;
-    temperature.value = 0.0;
-    dissolvedOxygen.value = 0.0;
+    phController.clear();
+    salinityController.clear();
+    temperatureController.clear();
+    doController.clear();
   }
 
   checkDoColor() {
-    if (dissolvedOxygen.value < 5 || dissolvedOxygen.value > 8) {
+    if (double.parse(doController.text) < 5 ||
+        double.parse(doController.text) > 8) {
       return red;
-    } else if (dissolvedOxygen.value >= 5 && dissolvedOxygen.value <= 6) {
+    } else if (double.parse(doController.text) >= 5 &&
+        double.parse(doController.text) <= 6) {
       return yellow;
     } else {
       return green;
@@ -71,10 +82,13 @@ class CheckWaterQualityController extends GetxController {
   }
 
   checkPhColor() {
-    if (ph.value < 6.5 || ph.value > 9.5) {
+    if (double.parse(phController.text) < 6.5 ||
+        double.parse(phController.text) > 9.5) {
       return red;
-    } else if (ph.value > 6.5 && ph.value < 7.5 ||
-        ph.value > 8.5 && ph.value < 9.5) {
+    } else if (double.parse(phController.text) > 6.5 &&
+            double.parse(phController.text) < 7.5 ||
+        double.parse(phController.text) > 8.5 &&
+            double.parse(phController.text) < 9.5) {
       return yellow;
     } else {
       return green;
@@ -82,10 +96,13 @@ class CheckWaterQualityController extends GetxController {
   }
 
   checkSalinityColor() {
-    if (salinity.value < 0 || salinity.value > 35) {
+    if (double.parse(salinityController.text) < 0 ||
+        double.parse(salinityController.text) > 35) {
       return red;
-    } else if (salinity.value >= 0 && salinity.value < 15 ||
-        salinity.value > 30 && salinity.value <= 35) {
+    } else if (double.parse(salinityController.text) >= 0 &&
+            double.parse(salinityController.text) < 15 ||
+        double.parse(salinityController.text) > 30 &&
+            double.parse(salinityController.text) <= 35) {
       return yellow;
     } else {
       return green;
@@ -93,10 +110,13 @@ class CheckWaterQualityController extends GetxController {
   }
 
   checkTemperatureColor() {
-    if (temperature.value < 26 || temperature.value > 35) {
+    if (double.parse(temperatureController.text) < 26 ||
+        double.parse(temperatureController.text) > 35) {
       return red;
-    } else if (temperature.value >= 26 && temperature.value < 28 ||
-        temperature.value > 32 && temperature.value <= 35) {
+    } else if (double.parse(temperatureController.text) >= 26 &&
+            double.parse(temperatureController.text) < 28 ||
+        double.parse(temperatureController.text) > 32 &&
+            double.parse(temperatureController.text) <= 35) {
       return yellow;
     } else {
       return green;
