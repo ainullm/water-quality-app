@@ -21,8 +21,8 @@ class ProfileView extends GetView<ProfileController> {
             Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(35),
+                  bottomRight: Radius.circular(35),
                 ),
                 gradient: LinearGradient(
                   begin: Alignment.topRight,
@@ -33,14 +33,14 @@ class ProfileView extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              height: 260,
+              height: 250,
               width: Get.width,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 110,
+                      height: 100,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -91,7 +91,7 @@ class ProfileView extends GetView<ProfileController> {
                     height: 25,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   MyMenuButtonWidget(
                     icon: AppImage.svg(
@@ -146,7 +146,7 @@ class ProfileView extends GetView<ProfileController> {
                     textColor: red,
                   ),
                   const SizedBox(
-                    height: 140,
+                    height: 160,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

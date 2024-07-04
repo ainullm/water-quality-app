@@ -34,7 +34,7 @@ class SponsorshipView extends GetView<SponsorshipController> {
               clipBehavior: Clip.none,
               viewportFraction: 0.4,
               enlargeCenterPage: true,
-              aspectRatio: 2.3,
+              aspectRatio: 2.7,
               autoPlay: true,
               scrollPhysics: const BouncingScrollPhysics(),
               onPageChanged: (index, reason) => controller.setImageIndex(index),
@@ -51,13 +51,13 @@ class SponsorshipView extends GetView<SponsorshipController> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  Text(
-                    data.title!,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: black2),
-                  ),
+                  // Text(
+                  //   data.title!,
+                  //   style: Theme.of(context)
+                  //       .textTheme
+                  //       .titleLarge!
+                  //       .copyWith(color: black2),
+                  // ),
                 ],
               );
             },

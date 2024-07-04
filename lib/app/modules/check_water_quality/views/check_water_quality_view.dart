@@ -172,7 +172,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
                         suffixIconConstraints: const BoxConstraints(
-                          minWidth: 40,
+                          minWidth: 35,
                         ),
                         suffix: Padding(
                           padding: const EdgeInsets.only(right: 10),
@@ -349,18 +349,18 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   ranges: const [
                                     LinearGaugeRange(
                                       startValue: 0,
-                                      endValue: 4,
+                                      endValue: 3,
                                       position: LinearElementPosition.outside,
                                       color: red2,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 4,
-                                      endValue: 6,
+                                      startValue: 3,
+                                      endValue: 4,
                                       position: LinearElementPosition.outside,
                                       color: yellow,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 6,
+                                      startValue: 4,
                                       endValue: 10,
                                       position: LinearElementPosition.outside,
                                       color: green,
@@ -415,12 +415,12 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   ranges: const [
                                     LinearGaugeRange(
                                       startValue: 0,
-                                      endValue: 6.5,
+                                      endValue: 7,
                                       position: LinearElementPosition.outside,
                                       color: red2,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 6.5,
+                                      startValue: 7,
                                       endValue: 7.5,
                                       position: LinearElementPosition.outside,
                                       color: yellow,
@@ -433,12 +433,12 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                     ),
                                     LinearGaugeRange(
                                       startValue: 8.5,
-                                      endValue: 9.5,
+                                      endValue: 9,
                                       position: LinearElementPosition.outside,
                                       color: yellow,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 9.5,
+                                      startValue: 9,
                                       endValue: 14,
                                       position: LinearElementPosition.outside,
                                       color: Color(0xffF45656),
@@ -488,38 +488,38 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                   interval: 5,
                                   axisTrackStyle:
                                       const LinearAxisTrackStyle(thickness: 1),
-                                  minimum: -5,
-                                  maximum: 40,
+                                  minimum: 0,
+                                  maximum: 50,
                                   axisLabelStyle:
                                       const TextStyle(color: black1),
                                   ranges: const [
                                     LinearGaugeRange(
-                                      startValue: -5,
-                                      endValue: 0,
+                                      startValue: 0,
+                                      endValue: 5,
                                       position: LinearElementPosition.outside,
                                       color: red2,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 0,
-                                      endValue: 15,
+                                      startValue: 5,
+                                      endValue: 26,
                                       position: LinearElementPosition.outside,
                                       color: yellow,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 15,
-                                      endValue: 30,
+                                      startValue: 26,
+                                      endValue: 32,
                                       position: LinearElementPosition.outside,
                                       color: green,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 30,
-                                      endValue: 35,
+                                      startValue: 32,
+                                      endValue: 40,
                                       position: LinearElementPosition.outside,
                                       color: yellow,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 35,
-                                      endValue: 40,
+                                      startValue: 40,
+                                      endValue: 50,
                                       position: LinearElementPosition.outside,
                                       color: red2,
                                     ),
@@ -594,15 +594,15 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                                     ),
                                     LinearGaugeRange(
                                       startValue: 32,
-                                      endValue: 35,
+                                      endValue: 34,
                                       position: LinearElementPosition.outside,
                                       color: yellow,
                                     ),
                                     LinearGaugeRange(
-                                      startValue: 35,
+                                      startValue: 34,
                                       endValue: 40,
                                       position: LinearElementPosition.outside,
-                                      color: Color(0xffF45656),
+                                      color: red2,
                                     ),
                                   ],
                                   markerPointers: [

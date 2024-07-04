@@ -74,8 +74,8 @@ class CheckWaterQualityController extends GetxController {
   checkDoColor() {
     if (double.parse(doController.text) < 3) {
       return red;
-    } else if (double.parse(doController.text) >= 4 &&
-        double.parse(doController.text) <= 6) {
+    } else if (double.parse(doController.text) >= 3 &&
+        double.parse(doController.text) < 4) {
       return yellow;
     } else {
       return green;
@@ -83,13 +83,13 @@ class CheckWaterQualityController extends GetxController {
   }
 
   checkPhColor() {
-    if (double.parse(phController.text) < 6.5 ||
-        double.parse(phController.text) > 9.5) {
+    if (double.parse(phController.text) < 7 ||
+        double.parse(phController.text) > 9) {
       return red;
-    } else if (double.parse(phController.text) > 6.5 &&
+    } else if (double.parse(phController.text) >= 7 &&
             double.parse(phController.text) < 7.5 ||
         double.parse(phController.text) > 8.5 &&
-            double.parse(phController.text) < 9.5) {
+            double.parse(phController.text) <= 9) {
       return yellow;
     } else {
       return green;
@@ -98,12 +98,12 @@ class CheckWaterQualityController extends GetxController {
 
   checkSalinityColor() {
     if (double.parse(salinityController.text) < 0 ||
-        double.parse(salinityController.text) > 35) {
+        double.parse(salinityController.text) > 40) {
       return red;
-    } else if (double.parse(salinityController.text) >= 0 &&
-            double.parse(salinityController.text) < 15 ||
-        double.parse(salinityController.text) > 30 &&
-            double.parse(salinityController.text) <= 35) {
+    } else if (double.parse(salinityController.text) >= 5 &&
+            double.parse(salinityController.text) < 26 ||
+        double.parse(salinityController.text) > 32 &&
+            double.parse(salinityController.text) <= 40) {
       return yellow;
     } else {
       return green;
