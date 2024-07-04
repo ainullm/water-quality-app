@@ -81,7 +81,7 @@ class HomeView extends GetView<HomeController> {
                         MyParameterWidget(
                           icon: 'ic-oxygen',
                           title: 'Disolved Oxygen',
-                          value: '8',
+                          value: '--',
                           paramValue: 'mg/L',
                           textColor: blue,
                           cardColor: blueShade,
@@ -89,14 +89,14 @@ class HomeView extends GetView<HomeController> {
                         MyParameterWidget(
                           icon: 'ic-ph',
                           title: 'Potential Hydrogen',
-                          value: '7.2',
+                          value: '--',
                           textColor: red,
                           cardColor: redShade,
                         ),
                         MyParameterWidget(
                           icon: 'ic-salinity',
                           title: 'Salinity',
-                          value: '30',
+                          value: '--',
                           paramValue: 'ppt',
                           textColor: purple,
                           cardColor: purpleShade,
@@ -104,7 +104,7 @@ class HomeView extends GetView<HomeController> {
                         MyParameterWidget(
                           icon: 'ic-temp',
                           title: 'Temperature',
-                          value: '28',
+                          value: '--',
                           paramValue: '°C',
                           textColor: orange,
                           cardColor: orangeShade,
@@ -116,33 +116,33 @@ class HomeView extends GetView<HomeController> {
                       height: 35,
                     ),
 
-                    Text(
-                      'About Aquaculture ',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: AppImage.jpg(
-                          'foto-1',
-                          width: Get.width,
-                          height: 180,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Aquaculture is the farming of fish, crustaceans, molluscs, aquatic plants, algae, and other organisms. Aquaculture involves cultivating freshwater and saltwater populations under controlled conditions, and can be contrasted with commercial fishing, which is the harvesting of wild fish.',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      textAlign: TextAlign.justify,
-                    ),
+                    // Text(
+                    //   'About Aquaculture ',
+                    //   style: Theme.of(context).textTheme.titleMedium,
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                    //   child: ClipRRect(
+                    //     borderRadius: BorderRadius.circular(10),
+                    //     child: AppImage.jpg(
+                    //       'foto-1',
+                    //       width: Get.width,
+                    //       height: 180,
+                    //       fit: BoxFit.cover,
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // Text(
+                    //   'Aquaculture is the farming of fish, crustaceans, molluscs, aquatic plants, algae, and other organisms. Aquaculture involves cultivating freshwater and saltwater populations under controlled conditions, and can be contrasted with commercial fishing, which is the harvesting of wild fish.',
+                    //   style: Theme.of(context).textTheme.bodyMedium,
+                    //   textAlign: TextAlign.justify,
+                    // ),
                     // Text(
                     //   'History Water Quality',
                     //   style: Theme.of(context).textTheme.titleMedium,

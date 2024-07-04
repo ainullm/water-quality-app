@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/about/bindings/about_binding.dart';
+import '../modules/about/views/about_view.dart';
 import '../modules/calculate/bindings/calculate_binding.dart';
 import '../modules/calculate/views/calculate_view.dart';
 import '../modules/check_water_quality/bindings/check_water_quality_binding.dart';
@@ -12,6 +14,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/sponsorship/bindings/sponsorship_binding.dart';
+import '../modules/sponsorship/views/sponsorship_view.dart';
 
 part 'app_routes.dart';
 
@@ -50,6 +54,16 @@ class AppPages {
       name: _Paths.CHECK_WATER_QUALITY,
       page: () => const CheckWaterQualityView(),
       binding: CheckWaterQualityBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABOUT,
+      page: () => const AboutView(),
+      binding: AboutBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPONSORSHIP,
+      page: () => const SponsorshipView(),
+      binding: SponsorshipBinding(),
     ),
   ];
 }

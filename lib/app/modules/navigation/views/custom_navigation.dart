@@ -54,12 +54,12 @@ class CustomNavigation extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: AppImage.svg(
-                currentIndex == 2 ? 'ic-nav-profile-on' : 'ic-nav-profile',
+                currentIndex == 2 ? 'ic-menu' : 'ic-menu',
                 color: currentIndex == 2 ? primaryColor : grey,
                 fit: BoxFit.contain,
                 width: 25,
               ),
-              label: 'Akun',
+              label: 'Menu',
             ),
           ],
         ),

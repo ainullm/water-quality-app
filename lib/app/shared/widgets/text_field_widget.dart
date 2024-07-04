@@ -28,6 +28,8 @@ class MyTextFieldWidget extends StatelessWidget {
     this.colorOffFocus,
     this.textInputAction,
     this.onFieldSubmitted,
+    this.suffixIconConstraints,
+    this.prefixIconConstraints,
   });
 
   final String? labelText;
@@ -53,6 +55,8 @@ class MyTextFieldWidget extends StatelessWidget {
   final TextStyle? hintStyle;
   final TextInputAction? textInputAction;
   final Function(String)? onFieldSubmitted;
+  final BoxConstraints? suffixIconConstraints;
+  final BoxConstraints? prefixIconConstraints;
 
   @override
   Widget build(BuildContext context) {
@@ -115,15 +119,17 @@ class MyTextFieldWidget extends StatelessWidget {
             floatingLabelStyle:
                 Theme.of(context).textTheme.bodyMedium?.copyWith(color: black1),
             prefixIcon: prefix,
-            prefixIconConstraints: const BoxConstraints(
-              maxHeight: 35,
-              maxWidth: 35,
-            ),
+            prefixIconConstraints: prefixIconConstraints ??
+                const BoxConstraints(
+                  maxHeight: 35,
+                  maxWidth: 35,
+                ),
             suffixIcon: suffix,
-            suffixIconConstraints: const BoxConstraints(
-              maxHeight: 35,
-              maxWidth: 35,
-            ),
+            suffixIconConstraints: suffixIconConstraints ??
+                const BoxConstraints(
+                  maxHeight: 35,
+                  maxWidth: 35,
+                ),
             contentPadding:
                 contentPadding ?? const EdgeInsets.symmetric(horizontal: 20),
             hintText: hintText,

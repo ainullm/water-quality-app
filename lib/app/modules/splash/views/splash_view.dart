@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:spk_water_quality_fuzzyahp_ta/app/shared/styles/app_colors.dart';
-import 'package:spk_water_quality_fuzzyahp_ta/app/shared/styles/app_text_style.dart';
 
+import '../../../shared/styles/app_colors.dart';
+import '../../../shared/utils/images_utils.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -12,17 +12,17 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     controller.onInit();
     return Scaffold(
-      bottomNavigationBar: Container(
-        color: black2,
-        padding: const EdgeInsets.all(5),
-        child: Text(
-          '© 2024 Aquaculture PENS',
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                color: white,
-              ),
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   color: black2,
+      //   padding: const EdgeInsets.all(5),
+      //   child: Text(
+      //     '© 2024 Aquaculture PENS',
+      //     textAlign: TextAlign.center,
+      //     style: Theme.of(context).textTheme.bodySmall!.copyWith(
+      //           color: white,
+      //         ),
+      //   ),
+      // ),
       body: Container(
         height: Get.height,
         width: Get.width,
@@ -31,15 +31,22 @@ class SplashView extends GetView<SplashController> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              primaryColor,
               secondaryColor,
+              primaryColor,
             ],
           ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
+            SizedBox(height: Get.height * 0.37),
+            AppImage.svg(
+              'ic-logo',
+              width: 80,
+              height: 80,
+              color: white,
+            ),
+            const SizedBox(height: 15),
             Text(
               'AQPENS',
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
@@ -47,17 +54,30 @@ class SplashView extends GetView<SplashController> {
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: Get.width * 0.7,
-              child: Text(
-                'Penerapan Teknologi Elektro untuk Teknologi Akuakultur',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: white,
-                    ),
-              ),
-            ),
+            // SizedBox(
+            //   width: Get.width * 0.7,
+            //   child: Text(
+            //     'Penerapan Teknologi Elektro untuk Teknologi Akuakultur',
+            //     textAlign: TextAlign.center,
+            //     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            //           color: white,
+            //         ),
+            //   ),
+            // ),
+            SizedBox(height: Get.height * 0.36),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppImage.png('pens', width: 25, height: 25),
+                const SizedBox(width: 15),
+                Text(
+                  'Aquaculture PENS',
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: white,
+                      ),
+                ),
+              ],
+            )
           ],
         ),
       ),

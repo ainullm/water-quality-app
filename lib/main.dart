@@ -7,7 +7,7 @@ import 'app/shared/styles/app_themes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   runApp(
     GetMaterialApp(
       theme: AppTheme.light,

@@ -72,10 +72,9 @@ class CheckWaterQualityController extends GetxController {
   }
 
   checkDoColor() {
-    if (double.parse(doController.text) < 5 ||
-        double.parse(doController.text) > 8) {
+    if (double.parse(doController.text) < 3) {
       return red;
-    } else if (double.parse(doController.text) >= 5 &&
+    } else if (double.parse(doController.text) >= 4 &&
         double.parse(doController.text) <= 6) {
       return yellow;
     } else {

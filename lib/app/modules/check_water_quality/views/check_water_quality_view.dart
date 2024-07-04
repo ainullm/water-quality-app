@@ -88,6 +88,19 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         controller: controller.doController,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
+                        suffixIconConstraints: const BoxConstraints(
+                          minWidth: 50,
+                        ),
+                        suffix: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text(
+                            'mg/L',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: blue.withOpacity(0.9)),
+                          ),
+                        ),
                         // colorBackground: blueShade,
                         colorOnFocus: blue,
                         colorOffFocus: blueShade,
@@ -101,7 +114,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(color: blue.withOpacity(0.9)),
+                            ?.copyWith(color: black2),
                       ),
                       MyTextFieldWidget(
                         controller: controller.phController,
@@ -120,13 +133,26 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(color: red.withOpacity(0.9)),
+                            ?.copyWith(color: black2),
                       ),
                       MyTextFieldWidget(
                         controller: controller.salinityController,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
                         // colorBackground: purpleShade,
+                        suffixIconConstraints: const BoxConstraints(
+                          minWidth: 40,
+                        ),
+                        suffix: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text(
+                            'ppt',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: purple.withOpacity(0.9)),
+                          ),
+                        ),
                         colorOnFocus: purple,
                         colorOffFocus: purpleShade,
                         hintText: 'Salinity',
@@ -139,12 +165,25 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(color: purple.withOpacity(0.9)),
+                            ?.copyWith(color: black2),
                       ),
                       MyTextFieldWidget(
                         controller: controller.temperatureController,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
+                        suffixIconConstraints: const BoxConstraints(
+                          minWidth: 40,
+                        ),
+                        suffix: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text(
+                            '°C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: orange.withOpacity(0.9)),
+                          ),
+                        ),
                         onFieldSubmitted: (value) {
                           controller.checkWater(
                             {
@@ -182,7 +221,7 @@ class CheckWaterQualityView extends GetView<CheckWaterQualityController> {
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyMedium
-                            ?.copyWith(color: orange.withOpacity(0.9)),
+                            ?.copyWith(color: black2),
                       ),
                       const SizedBox(
                         height: 25,

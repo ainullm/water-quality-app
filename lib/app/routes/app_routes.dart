@@ -9,6 +9,8 @@ abstract class Routes {
   static const CALCULATE = _Paths.CALCULATE;
   static const NAVIGATION = _Paths.NAVIGATION;
   static const CHECK_WATER_QUALITY = _Paths.CHECK_WATER_QUALITY;
+  static const ABOUT = _Paths.ABOUT;
+  static const SPONSORSHIP = _Paths.SPONSORSHIP;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const CALCULATE = '/calculate';
   static const NAVIGATION = '/navigation';
   static const CHECK_WATER_QUALITY = '/check-water-quality';
+  static const ABOUT = '/about';
+  static const SPONSORSHIP = '/sponsorship';
 }
