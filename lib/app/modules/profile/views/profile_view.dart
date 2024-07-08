@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 import 'package:spk_water_quality_fuzzyahp_ta/app/routes/app_pages.dart';
 import 'package:spk_water_quality_fuzzyahp_ta/app/shared/styles/app_colors.dart';
 import 'package:spk_water_quality_fuzzyahp_ta/app/shared/utils/images_utils.dart';
@@ -28,8 +29,8 @@ class ProfileView extends GetView<ProfileController> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    primaryColor,
                     blue,
+                    primaryColor,
                   ],
                 ),
               ),
@@ -145,8 +146,8 @@ class ProfileView extends GetView<ProfileController> {
                     text: 'Keluar',
                     textColor: red,
                   ),
-                  const SizedBox(
-                    height: 160,
+                  SizedBox(
+                    height: Get.height * 0.2,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

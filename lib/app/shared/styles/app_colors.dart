@@ -24,5 +24,5 @@ const Color grey = Color(0xFFAEAEAE);
 const Color whiteGrey = Color(0xFFF9F9F9);
 const Color transparent = Colors.transparent;
 const Color green = Color.fromARGB(255, 10, 175, 148);
-const Color yellow = Color(0xffFFC93E);
+const Color yellow = Color.fromARGB(255, 245, 178, 8);
 const Color red2 = Color(0xffF45656);

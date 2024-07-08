@@ -15,6 +15,7 @@ class MyButton {
     double? width,
     double? height,
     TextStyle? textStyle,
+    Gradient? gradient,
   }) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -33,6 +34,7 @@ class MyButton {
               offset: const Offset(0, 2),
             ),
           ],
+          gradient: gradient,
         ),
         child: Center(
           child: Text(
