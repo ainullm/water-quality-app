@@ -19,9 +19,9 @@ class HomeView extends GetView<HomeController> {
       init: HomeController(),
       initState: (_) {},
       builder: (_) {
-        // Timer.periodic(const Duration(seconds: 10), (timer) {
-        //   _.getMonitoringData();
-        // });
+        Timer.periodic(const Duration(seconds: 10), (timer) {
+          _.getMonitoringData();
+        });
         return Scaffold(
           body: ListView(
             children: [
@@ -67,9 +67,11 @@ class HomeView extends GetView<HomeController> {
                         Obx(() => MyParameterWidget(
                               icon: 'ic-oxygen',
                               title: 'Disolved Oxygen',
-                              value: double.parse(
-                                      _.dissolvedOxygen.value.toString())
-                                  .toStringAsFixed(2),
+                              value: _.dissolvedOxygen.value != 0
+                                  ? double.parse(
+                                          _.dissolvedOxygen.value.toString())
+                                      .toStringAsFixed(2)
+                                  : '--',
                               paramValue: 'mg/L',
                               textColor: blue,
                               cardColor: blueShade,
@@ -77,16 +79,20 @@ class HomeView extends GetView<HomeController> {
                         Obx(() => MyParameterWidget(
                               icon: 'ic-ph',
                               title: 'Potential Hydrogen',
-                              value: double.parse(_.ph.value.toString())
-                                  .toStringAsFixed(2),
+                              value: _.ph.value != 0
+                                  ? double.parse(_.ph.value.toString())
+                                      .toStringAsFixed(2)
+                                  : '--',
                               textColor: red,
                               cardColor: redShade,
                             )),
                         Obx(() => MyParameterWidget(
                               icon: 'ic-salinity',
                               title: 'Salinity',
-                              value: double.parse(_.salinity.value.toString())
-                                  .toStringAsFixed(2),
+                              value: _.salinity.value != 0
+                                  ? double.parse(_.salinity.value.toString())
+                                      .toStringAsFixed(2)
+                                  : '--',
                               paramValue: 'ppt',
                               textColor: purple,
                               cardColor: purpleShade,
@@ -94,9 +100,10 @@ class HomeView extends GetView<HomeController> {
                         Obx(() => MyParameterWidget(
                               icon: 'ic-temp',
                               title: 'Temperature',
-                              value:
-                                  double.parse(_.temperature.value.toString())
-                                      .toStringAsFixed(2),
+                              value: _.temperature.value != 0
+                                  ? double.parse(_.temperature.value.toString())
+                                      .toStringAsFixed(2)
+                                  : '--',
                               paramValue: '°C',
                               textColor: orange,
                               cardColor: orangeShade,

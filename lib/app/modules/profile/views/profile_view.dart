@@ -20,12 +20,20 @@ class ProfileView extends GetView<ProfileController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(35),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
                 ),
-                gradient: LinearGradient(
+                boxShadow: [
+                  BoxShadow(
+                    color: black1.withOpacity(0.1),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+                gradient: const LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
@@ -34,23 +42,19 @@ class ProfileView extends GetView<ProfileController> {
                   ],
                 ),
               ),
-              height: 250,
+              height: 260,
               width: Get.width,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 100,
+                      height: 120,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const CircleAvatar(
-                          radius: 45,
-                          backgroundImage:
-                              AssetImage('assets/images/im-profile.png'),
-                        ),
+                        AppImage.png('im-profile', width: 80),
                         const SizedBox(
                           width: 20,
                         ),
@@ -89,10 +93,7 @@ class ProfileView extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 25,
-                  ),
-                  const SizedBox(
-                    height: 10,
+                    height: 40,
                   ),
                   MyMenuButtonWidget(
                     icon: AppImage.svg(
